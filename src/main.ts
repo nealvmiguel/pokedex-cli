@@ -1,8 +1,10 @@
-import { start } from 'node:repl';
-import { cleanInput, startREPL } from './repl.js';
+import { startREPL } from './repl.js';
+import { initState } from './state.js';
 
 function main() {
-  startREPL();
+  const state = initState();
+
+  startREPL(state);
 }
 
 main();
