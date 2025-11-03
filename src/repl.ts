@@ -1,11 +1,11 @@
 import { type State } from './state.js';
 
-export function startREPL(state: State): void {
+export async function startREPL(state: State): Promise<void> {
   const rl = state.rl;
   rl.setPrompt('Pokedex > ');
   rl.prompt();
 
-  rl.on('line', input => {
+  rl.on('line', async input => {
     const words = cleanInput(input);
     if (words.length === 0 || words[0] === '') {
       rl.prompt();
@@ -24,9 +24,10 @@ export function startREPL(state: State): void {
     }
 
     try {
-      entry.callback(state);
-    } catch {
-      console.log('Unknown command');
+      // calling callback commands
+      await entry.callback(state);
+    } catch (e: any) {
+      console.log(`Error: ${e?.message ?? e}`);
     }
 
     rl.prompt();
