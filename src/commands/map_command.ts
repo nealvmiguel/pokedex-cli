@@ -7,7 +7,7 @@ export async function commandMap(state: State): Promise<void> {
   state.nextLocationsURL = data.next;
   state.prevLocationsURL = data.previous;
 
-  data.results.forEach(r => console.log(r.name));
+  data.results.forEach((r) => console.log(r.name));
 }
 
 // TypeScript
@@ -24,5 +24,5 @@ export async function commandMapBack(state: State): Promise<void> {
   state.nextLocationsURL = data.next;
   state.prevLocationsURL = data.previous;
 
-  data.results.forEach(r => console.log(r.name));
+  data.results.forEach((r) => console.log(r.name));
 }
