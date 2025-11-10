@@ -5,7 +5,7 @@ export async function startREPL(state: State): Promise<void> {
   rl.setPrompt('Pokedex > ');
   rl.prompt();
 
-  rl.on('line', async input => {
+  rl.on('line', async (input) => {
     const words = cleanInput(input);
     if (words.length === 0 || words[0] === '') {
       rl.prompt();
@@ -39,5 +39,5 @@ export function cleanInput(input: string): string[] {
     .toLowerCase()
     .trim()
     .split(' ')
-    .filter(word => word !== '');
+    .filter((word) => word !== '');
 }

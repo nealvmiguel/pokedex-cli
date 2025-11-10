@@ -1,0 +1,1 @@
+I get it now when i run map it fetches the API then the we save the next to our state.nextLocationURL. For example we when we input map the next would ""https://pokeapi.co/api/v2/location-area?offset=20&limit=20" then if we input map again the state.nextLocationURL is "https://pokeapi.co/api/v2/location-area?offset=40&limit=20"
