@@ -10,7 +10,6 @@ export async function commandMap(state: State): Promise<void> {
   data.results.forEach((r) => console.log(r.name));
 }
 
-// TypeScript
 export async function commandMapBack(state: State): Promise<void> {
   if (state.prevLocationsURL === null) {
     console.log("you're on the first page");
