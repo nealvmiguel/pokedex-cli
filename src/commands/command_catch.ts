@@ -1,4 +1,3 @@
-import { PokeAPI } from 'src/api/pokeapi';
 import { State } from 'src/state.js';
 
 export async function commandCatch(state: State, ...args: string[]) {
@@ -8,13 +7,21 @@ export async function commandCatch(state: State, ...args: string[]) {
   }
 
   const pokemon = args[0];
-  const data = await state.pokeapi.fetchPokemon(pokemon);
+  try {
+    const data = await state.pokeapi.fetchPokemon(pokemon);
+    console.log(`Throwing a Pokeball at ${pokemon}...`);
 
-  console.log(`Throwing a Pokeball at ${pokemon}...`);
+    const pokemonBaseExperience = data.base_experience;
+    const catchProbability = 1 / (1 + pokemonBaseExperience / 100);
 
-  const pokemonBaseExperience = data.base_experience;
-  const catchProbability = 1 / (1 + pokemonBaseExperience / 100);
-
-  if (Math.random() < catchProbability) {
+    if (Math.random() < catchProbability) {
+      state.pokedex[pokemon] = { name: pokemon };
+      console.log(`${pokemon} was caught`);
+    } else {
+      console.log(`${pokemon} escaped`);
+    }
+  } catch (e) {
+    console.log(`unknown ${pokemon}`);
+    console.log(`${(e as Error).message}`);
   }
 }

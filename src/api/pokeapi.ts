@@ -45,6 +45,7 @@ export class PokeAPI {
 
   async fetchPokemon(pokemonName: string) {
     const url = `${PokeAPI.baseURL}/pokemon/${pokemonName}`;
+
     return this.#fetchJSON<{ base_experience: number }>(url);
   }
 }
