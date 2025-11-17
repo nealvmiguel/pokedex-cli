@@ -5,7 +5,7 @@ export async function commandExplore(
   ...args: string[]
 ): Promise<void> {
   if (!args[0]) {
-    console.log('Must type the city to explore');
+    console.log('Must provide the city to explore');
     return;
   }
 

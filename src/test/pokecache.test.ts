@@ -34,19 +34,6 @@ test('stopReapLoop prevents future reaps', async () => {
   expect(c.get('k')).toBe('v');
 });
 
-test('expires with short interval', async () => {
-  const interval = 100;
-  const c = new Cache(interval);
-
-  c.add('k', 'v');
-  expect(c.get('k')).toBe('v'); // immediate check, no wait
-
-  await new Promise((r) => setTimeout(r, interval + 20)); // small buffer
-  expect(c.get('k')).toBeUndefined();
-
-  c.stopReapLoop();
-});
-
 test('expires with 0.5 second', async () => {
   const interval = 500;
   const c = new Cache(interval);

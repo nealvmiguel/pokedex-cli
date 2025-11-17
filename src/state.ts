@@ -1,6 +1,6 @@
 import { createInterface, type Interface } from 'readline';
 import { getCommands } from './commands/commands.js';
-import { PokeAPI } from './api/pokeapi.js';
+import { PokeAPI, Pokemon } from './api/pokeapi.js';
 
 export type CLICommand = {
   name: string;
@@ -28,7 +28,3 @@ export function initState(): State {
     pokedex: {},
   };
 }
-
-export type Pokemon = {
-  name: string;
-};
